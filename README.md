@@ -26,11 +26,10 @@ or
 
 Create a script in your package.json like this
 ```json
-...
+
 "scripts": {
     "i18n-cli": "node_modules/@guuri11/i18n-cli/bin/cli.js"
-  },
-  ...
+  }
 ```
 and just run 
 
