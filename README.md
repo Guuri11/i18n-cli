@@ -11,7 +11,7 @@ Working with translations can be so boring & annoying when you are trasnlating a
 # 🧪 Features
 Add new sentences to locales, just put the folder path where the json files are located.
 
-## Usage/Examples
+## Installation
 
 Install with ```$ npm install --save-dev i18n-cli```
 
@@ -19,8 +19,28 @@ or
 
 Install with ```$ yarn add --dev @guuri11/i18n-cli ```
 
-Run ```$ npm i18n-cli ```
+## Usage
+Run ```$ node_modules/@guuri11/i18n-cli/bin/cli.js  ```
 
+or
+
+Create a script in your package.json like this
+```json
+...
+"scripts": {
+    "i18n-cli": "node_modules/@guuri11/i18n-cli/bin/cli.js"
+  },
+  ...
+```
+and just run 
+
+```npm run i18n-cli```
+
+or
+
+```yarn run i18n-cli```
+
+#### Preview
 ```
 ℹ Running I18n editor
 ℹ Please, choose one of this options
