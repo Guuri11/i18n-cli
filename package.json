@@ -1,6 +1,6 @@
 {
   "name": "@guuri11/i18n-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI tool for quick i18n additions",
   "main": "index.js",
   "scripts": {
