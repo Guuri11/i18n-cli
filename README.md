@@ -1,7 +1,19 @@
 
+# 🌍 I18n-cli
+
+CLI tool for quick i18n additions
+
+
+# 🏆 Motivation
+Working with translations can be so boring & annoying when you are trasnlating a big project with 3 or more languages availables. So I wanted to have a node tool for inserting ASAP the sentences for i18n.
+
+
+# 🧪 Features
+Add new sentences to locales, just put the folder path where the json files are located.
+
 ## Usage/Examples
 
-Install with ```$ npm install --save-dev @guuri11/i18n-cli```
+Install with ```$ npm install --save-dev i18n-cli```
 
 Run ```$ npm i18n-cli ```
 
@@ -41,3 +53,8 @@ ready Value: Hola mundo
   "hello_world": "Hola mundo"
 }
 ````
+
+## 📝 Feedback
+
+If you have any feedback, please reach out to me at Linkedin 😁 (https://www.linkedin.com/in/sergio-gurillo-corral-2585431b0/)
+
