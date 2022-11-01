@@ -1,9 +1,9 @@
 
 ## Usage/Examples
 
-Install with ```$ npm install --save-dev i18n-cli-tool```
+Install with ```$ npm install --save-dev @guuri11/i18n-cli```
 
-Run ```$ npm i18n-cli-tool ```
+Run ```$ npm i18n-cli ```
 
 ```
 ℹ Running I18n editor
