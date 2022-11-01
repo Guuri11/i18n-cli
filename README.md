@@ -14,7 +14,9 @@ Add new sentences to locales, just put the folder path where the json files are 
 ## Usage/Examples
 
 Install with ```$ npm install --save-dev i18n-cli```
+
 or
+
 Install with ```$ yarn add --dev @guuri11/i18n-cli ```
 
 Run ```$ npm i18n-cli ```
