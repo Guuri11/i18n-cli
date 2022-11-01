@@ -1,5 +1,5 @@
 {
-  "name": "i18n-cli",
+  "name": "i18n-cli-tool",
   "version": "1.0.0",
   "description": "CLI tool for quick i18n additions",
   "main": "index.js",
