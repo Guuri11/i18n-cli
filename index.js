@@ -7,18 +7,20 @@ const readline = require('readline').createInterface({
 });
 const fs = require('fs');
 
+let localePath = null;
+
 // Prompt the user with a question and return their answer as a promise
 function question(q) {
   return new Promise(resolve => readline.question(q, answ => resolve(answ)));
 }
 
 // Add a new translation sentence to a specific locale file
-async function addToLocale(locale, key, path) {
+async function addToLocale(locale, key) {
   const value = await question(`Add translation for ${locale} locale: `);
 
   consola.ready(`Value: ${value}`);
 
-  const filePath = `${path}/${locale}.json`;
+  const filePath = `${localePath}/${locale}.json`;
 
   // Read the contents of the locale file as JSON data
   let localeJson;
@@ -53,15 +55,17 @@ async function addToLocale(locale, key, path) {
 
 // Get a list of locales and prompt the user to add a translation sentence to each one
 async function addTranslationSentence() {
+  if (!localePath) {
+    localePath = await question('Enter the folder path where the locale files are located: ');
+  }
+
   const key = await question('Enter the key of the new translation sentence: ');
   consola.ready(`Key: ${key}`);
-
-  const path = await question('Enter the folder path where the locale files are located: ');
 
   // Read the list of files in the specified folder
   let files;
   try {
-    files = await fs.promises.readdir(path);
+    files = await fs.promises.readdir(localePath);
   } catch (err) {
     consola.error(`Unable to read directory: ${err}`);
     return;
@@ -69,7 +73,7 @@ async function addTranslationSentence() {
 
   // Loop through each file in the folder and prompt the user to add a translation sentence
   for (const file of files) {
-    await addToLocale(file.replace('.json', ''), key, path);
+    await addToLocale(file.replace('.json', ''), key);
   }
 
   consola.success('Translation added to all locales');
