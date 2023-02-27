@@ -170,13 +170,79 @@ async function deleteFromLocale() {
   }
 }
 
+// Generate a CSV file from all locales
+async function generateCSV() {
+  if (!localePath) {
+    localePath = await question('Enter the folder path where the locale files are located: ');
+  }
+
+  // Read the list of files in the specified folder
+  let files;
+  try {
+    files = await fs.promises.readdir(localePath);
+  } catch (err) {
+    consola.error(`Unable to read directory: ${err}`);
+    return;
+  }
+
+  const csvData = {};
+
+  // Loop through each file in the folder and add its contents to the CSV data
+  for (const file of files) {
+    const locale = file.replace('.json', '');
+    const filePath = `${localePath}/${file}`;
+
+    // Read the contents of the locale file as JSON data
+    let localeJson;
+    try {
+      const fileData = await fs.promises.readFile(filePath);
+      localeJson = JSON.parse(fileData);
+    } catch (err) {
+      consola.error(`Unable to read file: ${err}`);
+      continue;
+    }
+
+    // Loop through each translation key in the locale JSON data and add it to the CSV data
+    for (const key in localeJson) {
+      if (!csvData[key]) {
+        csvData[key] = {};
+      }
+      csvData[key][locale] = localeJson[key];
+    }
+  }
+
+  // Extract keys and locales from the CSV data
+  const keys = Object.keys(csvData);
+  const locales = Object.keys(csvData[keys[0]]);
+
+  // Create the header row of the CSV data
+  const header = ['key', ...locales];
+
+  // Create the data rows of the CSV data
+  const rows = keys.map(key => {
+    const values = locales.map(locale => csvData[key][locale] || '');
+    return [key, ...values];
+  });
+
+  // Concatenate the header row and data rows into the final CSV data
+  const csv = [header, ...rows].map(row => row.join(',')).join('\n');
+
+  // Write the CSV data to a file
+  try {
+    await fs.promises.writeFile('locales.csv', csv);
+    consola.success('CSV generated successfully');
+  } catch (err) {
+    consola.error(`Unable to write file: ${err}`);
+  }
+}
 
 // Prompt the user to choose an option and handle their selection
 async function askOption() {
   consola.info('Please choose an option:');
   console.log('1 -> Add Translation Sentence');
   console.log('2 -> Delete Translation Sentence');
-  console.log('3 -> Exit');
+  console.log('3 -> Generate CSV extract');
+  console.log('4 -> Exit');
 
   const option = await question('Option: ');
 
@@ -192,6 +258,10 @@ async function askOption() {
       await askOption();
       break;
     case 3:
+      await generateCSV()
+      await askOption();
+      break;
+    case 4:
       consola.info('Exiting...');
       process.exit();
     default:
@@ -200,9 +270,6 @@ async function askOption() {
       break;
   }
 }
-
-
-
 
 // Start the CLI tool
 async function i18ncli() {
