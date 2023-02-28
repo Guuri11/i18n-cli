@@ -9,7 +9,11 @@ Working with translations can be so boring & annoying when you are trasnlating a
 
 
 # 🧪 Features
-Add new sentences to locales, just put the folder path where the json files are located.
+
+- Add new sentences to locales, just put the folder path where the json files are located.
+- Update a the sentences based on a key
+- Delete the sentences based on a key
+- Export the locales to CSV
 
 ## Installation
 
