@@ -45,25 +45,32 @@ or
 
 #### Preview
 ```
-ℹ Running I18n editor
-ℹ Please, choose one of this options
-
-1 -> Add Sentence
-2 -> Exit
+ℹ Running i18n editor                                                                                                                      15:12:33
+ℹ Please choose an option:                                                                                                                 15:12:33
+1 -> Add Translation Sentence
+2 -> Delete Translation Sentence
+3 -> Generate CSV extract
+4 -> Exit
 Option: 1
-Choose the key of the new sentence: hello_world
-ready Key hello_world
-
-Paste the folder path where is located the locales: ./src/locales
-
-Add translation for en.json locale: Hello World
-ready Value: Hello World
-✔ Sentence added
-
-Add translation for es.json locale: Hola mundo
-ready Value: Hola mundo
-✔ Sentence added
-✔ Translation added to locales
+Selected option: 1
+Enter the folder path where the locale files are located: ./locale
+Enter the key of the new translation sentence: hello_world
+ready Key: hello_world                                                                                                                     15:12:59
+Add translation for en locale or type 'update' to modify an existing one: Hello world!
+ready Value: Hello world!                                                                                                                  15:13:21
+✔ Translation added to locale                                                                                                              15:13:21
+Add translation for es locale or type 'update' to modify an existing one: Hola mundo!
+ready Value: Hola mundo!                                                                                                                   15:13:25
+✔ Translation added to locale                                                                                                              15:13:25
+✔ Translation added to all locales                                                                                                         15:13:25
+ℹ Please choose an option:                                                                                                                 15:13:25
+1 -> Add Translation Sentence
+2 -> Delete Translation Sentence
+3 -> Generate CSV extract
+4 -> Exit
+Option: 3
+Selected option: 3
+✔ CSV generated successfully 
 ```
 #### Result
 
@@ -79,6 +86,12 @@ ready Value: Hola mundo
 {
   "hello_world": "Hola mundo"
 }
+````
+
+##### src/locales/locales.csv
+```csv
+key,en,es
+hello_world,Hello world!,Hola mundo!
 ````
 
 ## 📝 Feedback
