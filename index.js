@@ -225,7 +225,8 @@ async function generateCSV() {
   });
 
   // Concatenate the header row and data rows into the final CSV data
-  const csv = [header, ...rows].map(row => row.join(',')).join('\n');
+  separator = await question('Choose a separator character, for example: , or ;');
+  const csv = [header, ...rows].map(row => row.join(separator)).join('\n');
 
   // Write the CSV data to a file
   try {
