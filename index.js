@@ -225,7 +225,7 @@ async function generateCSV() {
   });
 
   // Concatenate the header row and data rows into the final CSV data
-  const csv = [header, ...rows].map(row => row.join("¬¬")).join('\n');
+  const csv = [header, ...rows].map(row => row.join(";")).join('\n');
 
   // Write the CSV data to a file
   try {
